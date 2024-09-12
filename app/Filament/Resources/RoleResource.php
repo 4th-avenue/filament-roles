@@ -8,6 +8,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Spatie\Permission\Models\Role;
+use Filament\Forms\Components\Section;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -25,9 +26,13 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->minLength(2)
-                    ->maxLength(255)
+                Section::make('Role')
+                    ->description('역할의 정보를 입력하세요.')
+                    ->schema([
+                        TextInput::make('name')
+                            ->minLength(2)
+                            ->maxLength(255)
+                    ])
             ]);
     }
 
