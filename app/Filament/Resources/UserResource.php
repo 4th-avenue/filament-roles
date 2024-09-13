@@ -44,6 +44,14 @@ class UserResource extends Resource
                             ->dehydrated(fn (?string $state): bool => filled($state))
                             ->required(fn (string $operation): bool => $operation === 'create')
                             ->maxLength(255),
+                        Forms\Components\Select::make('roles')
+                            ->multiple()
+                            ->relationship(titleAttribute: 'name')
+                            ->preload(),
+                        Forms\Components\Select::make('permissions')
+                            ->multiple()
+                            ->relationship(titleAttribute: 'name')
+                            ->preload(),
                     ])->columns(2)
             ]);
     }
