@@ -12,7 +12,7 @@ class UserPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasRole(['admin', 'user']);
+        return $user->hasRole(['admin', 'moderator', 'user']);
     }
 
     /**
@@ -28,7 +28,7 @@ class UserPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole(['admin', 'moderator']);
     }
 
     /**
@@ -36,7 +36,7 @@ class UserPolicy
      */
     public function update(User $user): bool
     {
-        return $user->hasRole('admin');
+        return $user->hasRole(['admin', 'moderator']);
     }
 
     /**
